@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: oracle19c
+  namespace: oracle-namespace
+spec:
+  selector:
+    app: oracle19c
+    version: 19.3.0.0
+  type: NodePort
+  ports:
+    - name: listener
+      protocol: TCP
+      port: 1521
+      targetPort: 1521
+    - name: oemexpress
+      protocol: TCP
+      port: 5500
+      targetPort: 5500

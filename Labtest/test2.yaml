@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-world
+  namespace: test
+  labels:
+    name: load-balancer-example
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: load-balancer-example
+  template:
+    metadata:
+      labels:
+        name: load-balancer-example
+    spec:
+      containers:
+        - name: hello-world
+          image: gcr.io/google-samples/node-hello:1.0
+          ports:
+            - containerPort: 8080
